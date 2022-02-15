@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createMemoryHistory, createBrowserHistory } from 'history'; // Used & installed by react router & react router dom
 import App from './App';
 
-console.log("marketing");
+console.log("auth");
 
 const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
     // Use default history, which is actually a browser history, if micro frontend is in isolation, otherwise, create a new memeory history
@@ -26,7 +26,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
             const { pathname: currentPathname } = history.location;
 
             if (currentPathname !== nextPathname) {
-                console.log("marketing changes route");
+                console.log("auth changes route");
                 history.push(nextPathname);
             }
         }
@@ -35,9 +35,9 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 
 // Isolation
 if (process.env.NODE_ENV === 'development') {
-    const marketingDevRoot = document.querySelector('#_marketing-dev-root');
-    if (marketingDevRoot) {
-        mount(marketingDevRoot, { defaultHistory: createBrowserHistory() });
+    const authDevRoot = document.querySelector('#_auth-dev-root');
+    if (authDevRoot) {
+        mount(authDevRoot, { defaultHistory: createBrowserHistory() });
     }
 }
 
