@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { mount } from 'authApp/Auth'; // Loads the micro frontend app
 import { useHistory } from 'react-router-dom';
 
-export default () => {
+export default ({ onSignIn }) => {
     const ref = useRef(null);
     const history = useHistory();
 
@@ -17,7 +17,8 @@ export default () => {
                     console.log("container changes route");
                     history.push(nextPathname);
                 }
-            }
+            },
+            onSignIn
         });
 
         history.listen(onParentNavigate);

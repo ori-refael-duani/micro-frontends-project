@@ -5,7 +5,7 @@ import App from './App';
 
 console.log("auth");
 
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
     // Use default history, which is actually a browser history, if micro frontend is in isolation, otherwise, create a new memeory history
     const history = defaultHistory || createMemoryHistory({
         initialEntries: [initialPath]
@@ -16,7 +16,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
     }
 
     ReactDOM.render(
-        <App history={history} />,
+        <App history={history} onSignIn={onSignIn} />,
         el
     );
 
